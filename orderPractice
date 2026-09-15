@@ -1,3 +1,73 @@
+""" 
+1. summarize_orders
+Your Task (Harder Than Expected)
+1. Write a function summarize_orders(orders) that returns:
+A dictionary with:
+
+pending_count: number of pending orders
+
+preparing_count: number of preparing orders
+
+delivered_count: number of delivered orders
+
+total_revenue: sum of all totals
+
+unique_items: a sorted list of all unique items across all orders
+
+Example output:
+{
+    "pending_count": 1,
+    "preparing_count": 1,
+    "delivered_count": 1,
+    "total_revenue": 53.25,
+    "unique_items": ["cups", "forks", "napkins", "plates", "straws"]
+}
+
+2. filter orders
+Your job:
+Write a function that:
+
+takes the full list of orders
+
+takes a status string ("pending", "preparing", "delivered")
+
+returns only the orders that match that status
+
+orders = [
+    {"id": 1, "items": ["forks", "napkins"], "status": "pending", "total": 12.50},
+    {"id": 2, "items": ["plates"], "status": "preparing", "total": 25.00},
+    {"id": 3, "items": ["cups", "straws"], "status": "delivered", "total": 15.75},
+]
+
+filter_orders(orders, "pending")
+
+[
+    {"id": 1, "items": ["forks", "napkins"], "status": "pending", "total": 12.50}
+]
+
+
+3. Apply discount
+Your job:
+Write a function that:
+
+takes the list of orders
+
+takes a discount percentage (like 10 for 10%)
+
+reduces each order’s total by that percentage
+
+returns the updated list
+
+Example:
+If an order has:
+total = 100
+And you call:
+apply_discount(orders, 10)
+Then the new total should be:
+90.0
+
+"""
+
 orders = [
     {"id": 1, "items": ["forks", "napkins"], "status": "pending", "total": 12.50},
     {"id": 2, "items": ["plates"], "status": "pending", "total": 25.00},
