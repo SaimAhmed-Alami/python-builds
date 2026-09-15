@@ -1,0 +1,62 @@
+orders = [
+    {"id": 1, "items": ["forks", "napkins"], "status": "pending", "total": 12.50},
+    {"id": 2, "items": ["plates"], "status": "pending", "total": 25.00},
+    {"id": 3, "items": ["cups", "straws", "plates"], "status": "delivered", "total": 15.75},
+]
+
+
+def summarize_orders(orders: list) -> dict:
+    pending_count: int =0
+    preparing_count: int =0
+    delivered_count: int =0
+    total_revenue: float =0
+    unique_items: list = []
+
+    for order in orders:
+        if (order["status"] == "pending"):
+            pending_count+=1
+        elif (order["status"] == "preparing"):
+            preparing_count+=1
+        elif (order["status"] == "delivered"):
+              delivered_count+=1
+        total_revenue+=order["total"]
+        for item in order["items"]:
+            
+            
+            if not item in unique_items:
+                unique_items.append(item)
+
+    final_dict: dict = {"pending_count":pending_count,
+                        "preparing_count":preparing_count,
+                        "delivered_count": delivered_count,
+                        "total_revenue": total_revenue,
+                        "unique_items": unique_items}
+    return final_dict
+
+def filter_orders(orders: list, status: str) -> list:
+    finalList: list = []
+    for order in orders:
+        if order["status"]==status:
+            finalList.append(order)
+
+    return finalList
+
+def apply_discount(orders: list, discount: float) -> list:
+    percent: float = (100-discount)/100
+    i: int = 0
+    for order in orders:
+        orders[i]["total"] = order["total"] *(percent)
+        i+=1
+    return orders
+
+
+print(summarize_orders(orders))
+print(filter_orders(orders, "pending"))
+print("")
+print(orders)
+apply_discount(orders, 50)
+print("")
+print(orders)
+
+
+
